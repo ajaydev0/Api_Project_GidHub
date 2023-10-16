@@ -1,10 +1,12 @@
-// ignore_for_file: file_names
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../app/modules/MainApp/controllers/main_app_controller.dart';
 
 class KtextFeild extends StatelessWidget {
   const KtextFeild({
     super.key,
-    required this.hintText,
+    this.hintText,
     required this.labelText,
     this.obscureText = false,
     this.prefixIcon,
@@ -14,9 +16,15 @@ class KtextFeild extends StatelessWidget {
     this.validator,
     required this.controller,
     this.counterText,
+    this.cursorColor,
+    this.labelStyle,
+    this.style,
   });
-  final String hintText;
+  final Color? cursorColor;
+  final String? hintText;
   final String labelText;
+  final TextStyle? labelStyle;
+  final TextStyle? style;
   final bool obscureText;
   final Widget? prefixIcon;
   final Color? prefixIconColor;
@@ -29,140 +37,47 @@ class KtextFeild extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      style: style,
+      cursorColor: Get.find<MainAppController>().theme.value
+          ? Colors.black
+          : Colors.white,
       obscureText: obscureText,
       validator: validator,
       maxLength: maxLength,
       controller: controller,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       decoration: InputDecoration(
-        prefixIconColor: prefixIconColor,
+        prefixIconColor: Get.find<MainAppController>().theme.value
+            ? Colors.black
+            : Colors.white,
         hintText: hintText,
         counterText: counterText,
         labelText: labelText,
+        labelStyle: labelStyle,
         suffixIcon: suffixIcon,
         prefixIcon: prefixIcon,
+        focusedBorder: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(30),
+            ),
+            borderSide: BorderSide(
+                color: Get.find<MainAppController>().theme.value
+                    ? Colors.black
+                    : Colors.white)),
         enabledBorder: OutlineInputBorder(
             borderRadius: const BorderRadius.all(
-              Radius.circular(10),
+              Radius.circular(30),
             ),
-            borderSide: BorderSide(color: Colors.blue)),
+            borderSide: BorderSide(
+                color: Get.find<MainAppController>().theme.value
+                    ? Colors.black
+                    : Colors.white)),
         border: const OutlineInputBorder(
           borderRadius: BorderRadius.all(
-            Radius.circular(10),
+            Radius.circular(30),
           ),
         ),
       ),
     );
   }
-}
-
-//New
-
-//
-
-//
-
-// import 'package:demo/utils/Ui_Content.dart';
-// import 'package:flutter/material.dart';
-// import 'package:get/get.dart';
-
-// import '../app/modules/auth/sign_in/controller/sign_in _controller.dart';
-
-// final controller = Get.put(SignInController());
-
-// class KtextFeild extends StatefulWidget {
-
-//   const KtextFeild({super.key, onChanged,
-//     hintText = "Enter Anything",
-//     labelText = "Email or username",
-//     prefixIcon = Icons.person,
-//     suffixIcon,
-//     validator,
-//     controller,
-//     maxLength,
-//     prefixIconColor,
-//     hintTextColor,
-//     readOnly = false,
-//     maxLengthEnforcement,
-//     obscureText = false,
-//     autovalidateMode = AutovalidateMode.onUserInteraction,
-//     border,
-//     prefixIconSize});
-
-//   @override
-//   State<KtextFeild> createState() => _KtextFeildState();
-// }
-
-// class _KtextFeildState extends State<KtextFeild> {
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return TextFormField(
-//     readOnly: readOnly,
-//     onChanged: onChanged,
-//     obscureText: obscureText,
-//     maxLengthEnforcement: maxLengthEnforcement,
-//     maxLength: maxLength,
-//     controller: controller,
-//     validator: validator,
-//     autovalidateMode: autovalidateMode,
-//     decoration: InputDecoration(
-//       prefixIconColor: appcolors.mainColor,
-//       enabledBorder: OutlineInputBorder(
-//           borderRadius: BorderRadius.all(
-//             Radius.circular(10),
-//           ),
-//           borderSide: BorderSide(color: appcolors.mainColor)),
-//       border: OutlineInputBorder(
-//         borderRadius: BorderRadius.all(
-//           Radius.circular(10),
-//         ),
-//       ),
-//       hintText: hintText,
-//       hintStyle: TextStyle(color: hintTextColor),
-//       labelText: labelText,
-//       prefixIcon: Icon(
-//         prefixIcon,
-//         size: prefixIconSize,
-//         color: prefixIconColor,
-//       ),
-//       suffixIcon: suffixIcon,
-//     ),
-//   );
-//   }
-// }
-
-// Widget KtextField(
-//    ) {
-//   return
-// }
-
-// //2
-Widget KtextField2(
-    {onChanged,
-    hintText = "Enter Anything",
-    labelText = "Email or username",
-    prefixIcon = Icons.person,
-    suffixIcon,
-    validator,
-    controller,
-    maxLength,
-    prefixIconColor,
-    hintTextColor,
-    readOnly = false,
-    maxLengthEnforcement,
-    obscureText = false,
-    autovalidateMode = AutovalidateMode.onUserInteraction,
-    border,
-    prefixIconSize}) {
-  return TextFormField(
-      readOnly: readOnly,
-      decoration: InputDecoration(
-          prefixIcon: Icon(
-            prefixIcon,
-            color: prefixIconColor,
-          ),
-          border: border,
-          hintStyle: TextStyle(color: hintTextColor),
-          hintText: hintText));
 }

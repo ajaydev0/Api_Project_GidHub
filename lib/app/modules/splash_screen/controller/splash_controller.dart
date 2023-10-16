@@ -12,7 +12,7 @@ class SplashController extends GetxController {
     await Future.delayed(
       const Duration(seconds: 3),
       () {
-        return Get.offAllNamed(Routes.signInPage);
+        return Get.offAllNamed(Routes.usrInput);
       },
     );
   }

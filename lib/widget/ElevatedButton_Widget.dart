@@ -1,7 +1,6 @@
 // ignore_for_file: file_names, non_constant_identifier_names
-
+import 'package:api_project/widget/Container_Widget.dart';
 import 'package:flutter/material.dart';
-
 import 'SizeBox_Widget.dart';
 
 //ElevatedButtonText
@@ -11,18 +10,19 @@ Widget KeleButtonText({
   double? w,
   required onPressed,
   double? tSize,
-  tColor,
+  Color? tColor,
+  Color? backgroundColor,
   tWeight,
-  backgroundColor = Colors.blue,
+  decoration,
   clipBehavior = Clip.none,
 }) {
-  return KsBox(
+  return Kcontainer(
     h: h,
     w: w,
+    decoration: decoration,
     child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: backgroundColor, // Background color
-        ),
+        style: ButtonStyle(
+            backgroundColor: MaterialStatePropertyAll(backgroundColor)),
         clipBehavior: clipBehavior,
         onPressed: onPressed,
         child: Text(
@@ -40,7 +40,7 @@ Widget KeleButtonIcon({
   required onPressed,
   isize,
   icolor,
-  backgroundColor = Colors.blue,
+  backgroundColor,
   clipBehavior = Clip.none,
 }) {
   return KsBox(

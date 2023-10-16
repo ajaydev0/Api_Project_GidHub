@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../MainApp/controllers/main_app_controller.dart';
 import '../controller/splash_controller.dart';
 
 class SplashView extends GetView<SplashController> {
@@ -10,25 +11,41 @@ class SplashView extends GetView<SplashController> {
   Widget build(BuildContext context) {
     Get.put(SplashController());
 
-    return const Scaffold(
+    return Scaffold(
       body: Center(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(
-            Icons.android,
-            size: 130,
-          ),
-          Text(
-            "Splash Screen",
-            style: TextStyle(color: Colors.black),
-          ),
-          SizedBox(height: 30),
-          SizedBox(
-              height: 40,
-              width: 40,
-              child: FittedBox(child: CupertinoActivityIndicator()))
-        ],
+          child: Obx(
+        () => Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Get.find<MainAppController>().theme.value
+                ? Container(
+                    height: 120,
+                    width: 120,
+                    decoration: const BoxDecoration(
+                        image: DecorationImage(
+                            image:
+                                AssetImage("assets/images/github_dark.png"))),
+                  )
+                : Container(
+                    height: 120,
+                    width: 120,
+                    decoration: const BoxDecoration(
+                        image: DecorationImage(
+                            image:
+                                AssetImage("assets/images/github_white.png"))),
+                  ),
+            const SizedBox(height: 25),
+            SizedBox(
+                height: 30,
+                width: 30,
+                child: FittedBox(
+                    child: CupertinoActivityIndicator(
+                  color: Get.find<MainAppController>().theme.value
+                      ? Colors.black
+                      : Colors.white,
+                )))
+          ],
+        ),
       )),
     );
   }
