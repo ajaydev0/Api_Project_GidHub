@@ -16,7 +16,7 @@ class UserInputController extends GetxController {
   searchClick(context, controller) {
     //Validation Key
     if (controller.formKey.currentState!.validate()) {
-      Get.toNamed(Routes.homePage);
+      Get.toNamed(Routes.homePage, arguments: inputEmail.text);
     }
   }
 

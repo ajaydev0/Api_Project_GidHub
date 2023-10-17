@@ -29,9 +29,7 @@ class HomeView extends GetView<HomeController> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         CachedNetworkImage(
-                          imageUrl:
-                              //  "",
-                              "https://images.pexels.com/photos/5218003/pexels-photo-5218003.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                          imageUrl: controller.userImgData.value,
                           imageBuilder: (context, imageProvider) => Container(
                             height: 150,
                             width: 150,
@@ -61,9 +59,9 @@ class HomeView extends GetView<HomeController> {
                             ),
                           ),
                         ),
-                        const Text(
-                          "User Name",
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                        Text(
+                          controller.userNameData.value,
+                          style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
@@ -95,18 +93,21 @@ class HomeView extends GetView<HomeController> {
                     KsBox(h: 20),
                     controller.listToGrid.value
                         ? SizedBox(
-                            height: 800,
+                            height: 700,
                             child: ListView.builder(
                               physics: const NeverScrollableScrollPhysics(),
                               scrollDirection: Axis.vertical,
-                              itemCount: 50,
+                              itemCount: 10,
                               itemBuilder: (context, index) {
-                                return ListViewitem(istheme: istheme);
+                                return ListViewitem(
+                                    istheme: istheme,
+                                    controller: controller,
+                                    index: index);
                               },
                             ),
                           )
                         : SizedBox(
-                            height: 800,
+                            height: 720,
                             child: GridView.builder(
                               physics: const NeverScrollableScrollPhysics(),
                               gridDelegate:
@@ -116,7 +117,10 @@ class HomeView extends GetView<HomeController> {
                               ),
                               itemCount: 20,
                               itemBuilder: (context, index) {
-                                return GridViewItem(istheme: istheme);
+                                return GridViewItem(
+                                    istheme: istheme,
+                                    controller: controller,
+                                    index: index);
                               },
                             ),
                           ),

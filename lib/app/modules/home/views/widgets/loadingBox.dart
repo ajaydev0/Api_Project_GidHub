@@ -4,8 +4,8 @@ import '../../../../../widget/ElevatedButton_Widget.dart';
 import '../../../../../widget/SizeBox_Widget.dart';
 import '../../../MainApp/controllers/main_app_controller.dart';
 
-class loadingBox extends StatelessWidget {
-  const loadingBox({
+class LoadingBox extends StatelessWidget {
+  const LoadingBox({
     super.key,
     required this.istheme,
   });
