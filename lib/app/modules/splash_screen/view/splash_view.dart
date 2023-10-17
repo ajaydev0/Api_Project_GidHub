@@ -10,14 +10,14 @@ class SplashView extends GetView<SplashController> {
   @override
   Widget build(BuildContext context) {
     Get.put(SplashController());
-
+    final istheme = Get.put(MainAppController());
     return Scaffold(
       body: Center(
           child: Obx(
         () => Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Get.find<MainAppController>().theme.value
+            istheme.theme.value
                 ? Container(
                     height: 120,
                     width: 120,
@@ -40,9 +40,7 @@ class SplashView extends GetView<SplashController> {
                 width: 30,
                 child: FittedBox(
                     child: CupertinoActivityIndicator(
-                  color: Get.find<MainAppController>().theme.value
-                      ? Colors.black
-                      : Colors.white,
+                  color: istheme.theme.value ? Colors.black : Colors.white,
                 )))
           ],
         ),

@@ -4,12 +4,10 @@ import 'package:api_project/widget/KAppBar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../widget/AppSize_MediaQuery.dart';
-
 import '../../../../widget/SizeBox_Widget.dart';
 import '../../../../widget/TextField_Widget.dart';
 import '../../MainApp/controllers/main_app_controller.dart';
 import '../controller/user_input_controller.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 
 class UserInputView extends GetView<UserInputController> {
   const UserInputView({super.key});
@@ -17,6 +15,7 @@ class UserInputView extends GetView<UserInputController> {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(UserInputController());
+    final istheme = Get.put(MainAppController());
     return Scaffold(
       appBar: const KAppBar(title: "User Input"),
       body: Center(
@@ -27,7 +26,7 @@ class UserInputView extends GetView<UserInputController> {
               () => Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Get.find<MainAppController>().theme.value
+                  istheme.theme.value
                       ? Kcontainer(
                           h: 150,
                           w: 150,
@@ -47,11 +46,11 @@ class UserInputView extends GetView<UserInputController> {
                       padding: const EdgeInsets.only(left: 50, right: 50),
                       child: KtextFeild(
                           style: TextStyle(
-                              color: Get.find<MainAppController>().theme.value
+                              color: istheme.theme.value
                                   ? Colors.black
                                   : Colors.white),
                           labelStyle: TextStyle(
-                            color: Get.find<MainAppController>().theme.value
+                            color: istheme.theme.value
                                 ? Colors.black
                                 : Colors.white,
                           ),
@@ -69,16 +68,13 @@ class UserInputView extends GetView<UserInputController> {
                       h: 40,
                       w: 100,
                       text: "Search",
-                      tColor: Get.find<MainAppController>().theme.value
-                          ? Colors.white
-                          : Colors.black,
+                      tColor: istheme.theme.value ? Colors.white : Colors.black,
                       tSize: 16,
                       onPressed: () {
                         controller.searchClick(context, controller);
                       },
-                      backgroundColor: Get.find<MainAppController>().theme.value
-                          ? Colors.black
-                          : Colors.white,
+                      backgroundColor:
+                          istheme.theme.value ? Colors.black : Colors.white,
                     ),
                   ),
                 ],
