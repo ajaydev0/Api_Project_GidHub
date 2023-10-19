@@ -24,77 +24,97 @@ class ListViewitem extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
         elevation: 5,
         child: Obx(
-          () => Container(
-            height: 80,
-            decoration: BoxDecoration(
-                border: Border.all(
+          () => GestureDetector(
+            onTap: () {
+              print(controller.repoList[index].url);
+            },
+            child: Container(
+              height: 80,
+              decoration: BoxDecoration(
+                  border: Border.all(
+                    color: istheme.theme.value
+                        ? Colors.black.withOpacity(.3)
+                        : Colors.white.withOpacity(.3),
+                  ),
+                  borderRadius: BorderRadius.circular(10),
                   color: istheme.theme.value
-                      ? Colors.black.withOpacity(.3)
-                      : Colors.white.withOpacity(.3),
+                      ? Colors.white.withOpacity(.85)
+                      : Colors.black.withOpacity(.85)),
+              child: Padding(
+                padding: const EdgeInsets.all(10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          child: Text(
+                            controller.repoList[index].repoName,
+                            style: const TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 16),
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 1,
+                            softWrap: false,
+                          ),
+                        ),
+                        Obx(
+                          () => Container(
+                            height: 30,
+                            width: 70,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              border: Border.all(
+                                color: istheme.theme.value
+                                    ? Colors.black.withOpacity(.3)
+                                    : Colors.white.withOpacity(.3),
+                              ),
+                            ),
+                            child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(5))),
+                                onPressed: () {
+                                  print(controller.repoList[index].url);
+                                },
+                                child: Text(
+                                  "Public",
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: istheme.theme.value
+                                        ? Colors.black
+                                        : Colors.white,
+                                  ),
+                                )),
+                          ),
+                        )
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          height: 10,
+                          width: 10,
+                          decoration: const BoxDecoration(
+                              color: Colors.teal, shape: BoxShape.circle),
+                        ),
+                        KsBox(w: 5),
+                        Text(
+                          controller.repoList[index].type,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 11),
+                        ),
+                      ],
+                    ),
+                    KsBox(h: 2),
+                    Text(
+                      controller.repoList[index].repoDate.substring(0, 10),
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 11),
+                    )
+                  ],
                 ),
-                borderRadius: BorderRadius.circular(10),
-                color: istheme.theme.value
-                    ? Colors.white.withOpacity(.85)
-                    : Colors.black.withOpacity(.85)),
-            child: Padding(
-              padding: const EdgeInsets.all(10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(
-                        child: Text(
-                          controller.data[index]["full_name"],
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16),
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 1,
-                          softWrap: false,
-                        ),
-                      ),
-                      Obx(
-                        () => SizedBox(
-                          height: 30,
-                          width: 70,
-                          child: ElevatedButton(
-                              onPressed: () {},
-                              child: Text(
-                                "Public",
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  color: istheme.theme.value
-                                      ? Colors.black
-                                      : Colors.white,
-                                ),
-                              )),
-                        ),
-                      )
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Container(
-                        height: 10,
-                        width: 10,
-                        decoration: const BoxDecoration(
-                            color: Colors.teal, shape: BoxShape.circle),
-                      ),
-                      KsBox(w: 5),
-                      const Text(
-                        "Dart",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 11),
-                      ),
-                    ],
-                  ),
-                  KsBox(h: 2),
-                  const Text(
-                    "Date : 12-01-2022 ",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 11),
-                  )
-                ],
               ),
             ),
           ),

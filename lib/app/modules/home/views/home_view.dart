@@ -75,7 +75,6 @@ class HomeView extends GetView<HomeController> {
                           () => IconButton(
                             onPressed: () {
                               controller.changeListToGrid();
-                              print(controller.listToGrid.value);
                             },
                             icon: Icon(
                               controller.listToGrid.value
@@ -93,11 +92,11 @@ class HomeView extends GetView<HomeController> {
                     KsBox(h: 20),
                     controller.listToGrid.value
                         ? SizedBox(
-                            height: 700,
+                            height: 100 * controller.repoList.length.toDouble(),
                             child: ListView.builder(
                               physics: const NeverScrollableScrollPhysics(),
                               scrollDirection: Axis.vertical,
-                              itemCount: 10,
+                              itemCount: controller.repoList.length,
                               itemBuilder: (context, index) {
                                 return ListViewitem(
                                     istheme: istheme,
@@ -107,7 +106,7 @@ class HomeView extends GetView<HomeController> {
                             ),
                           )
                         : SizedBox(
-                            height: 720,
+                            height: 90 * controller.repoList.length.toDouble(),
                             child: GridView.builder(
                               physics: const NeverScrollableScrollPhysics(),
                               gridDelegate:
@@ -115,7 +114,7 @@ class HomeView extends GetView<HomeController> {
                                 maxCrossAxisExtent: 200,
                                 childAspectRatio: 2 / 2,
                               ),
-                              itemCount: 20,
+                              itemCount: controller.repoList.length,
                               itemBuilder: (context, index) {
                                 return GridViewItem(
                                     istheme: istheme,
