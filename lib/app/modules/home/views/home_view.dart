@@ -69,7 +69,7 @@ class HomeView extends GetView<HomeController> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        const Text("Sort"),
+                        const Text("Sort (A-Z)"),
                         const Text("Repo List"),
                         Obx(
                           () => IconButton(

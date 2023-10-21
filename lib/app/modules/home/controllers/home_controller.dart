@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:api_project/Utils/snackBar_utils.dart';
 import 'package:api_project/app/modules/models/repoModel.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -26,11 +27,10 @@ class HomeController extends GetxController {
       //Name / Avatar Img
       userNameData.value = data1["login"] ?? "";
       userImgData.value = data1["avatar_url"] ?? "";
-      // print(repoName.value);
       callRepoData(userName);
     } else {
       Get.back();
-      Get.snackbar("Error", "User Not Found");
+      showSnackMessage(title: "Error", message: "User Not Found", seconds: 2);
     }
   }
 
