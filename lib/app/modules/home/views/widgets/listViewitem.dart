@@ -1,3 +1,4 @@
+import 'package:api_project/app/router/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../../widget/SizeBox_Widget.dart';
@@ -11,13 +12,13 @@ class ListViewitem extends StatelessWidget {
     required this.controller,
     required this.index,
   });
-
   final MainAppController istheme;
   final HomeController controller;
-  final index;
+  final dynamic index;
 
   @override
   Widget build(BuildContext context) {
+    String url = controller.repoList[index].url;
     return Padding(
       padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
       child: Material(
@@ -26,7 +27,7 @@ class ListViewitem extends StatelessWidget {
         child: Obx(
           () => GestureDetector(
             onTap: () {
-              print(controller.repoList[index].url);
+              Get.toNamed(Routes.repoView, arguments: url);
             },
             child: Container(
               height: 80,
@@ -76,7 +77,7 @@ class ListViewitem extends StatelessWidget {
                                         borderRadius:
                                             BorderRadius.circular(5))),
                                 onPressed: () {
-                                  print(controller.repoList[index].url);
+                                  Get.toNamed(Routes.repoView, arguments: url);
                                 },
                                 child: Text(
                                   "Public",
@@ -102,7 +103,7 @@ class ListViewitem extends StatelessWidget {
                         KsBox(w: 5),
                         Text(
                           controller.repoList[index].type,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 11),
                         ),
                       ],
@@ -110,8 +111,8 @@ class ListViewitem extends StatelessWidget {
                     KsBox(h: 2),
                     Text(
                       controller.repoList[index].repoDate.substring(0, 10),
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 11),
+                      style: const TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 11),
                     )
                   ],
                 ),

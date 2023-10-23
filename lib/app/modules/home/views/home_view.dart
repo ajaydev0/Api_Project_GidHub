@@ -70,7 +70,8 @@ class HomeView extends GetView<HomeController> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         const Text("Sort (A-Z)"),
-                        const Text("Repo List"),
+                        Text(
+                            "Repo List (${controller.repoList.length.toInt()})"),
                         Obx(
                           () => IconButton(
                             onPressed: () {
@@ -106,7 +107,10 @@ class HomeView extends GetView<HomeController> {
                             ),
                           )
                         : SizedBox(
-                            height: 90 * controller.repoList.length.toDouble(),
+                            //Even / Odd Logic
+                            height: controller.repoList.length.toInt().isEven
+                                ? 180 * controller.repoList.length / 2
+                                : 108 * controller.repoList.length.toDouble(),
                             child: GridView.builder(
                               physics: const NeverScrollableScrollPhysics(),
                               gridDelegate:

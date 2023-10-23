@@ -31,6 +31,7 @@ class HomeController extends GetxController {
     } else {
       Get.back();
       showSnackMessage(title: "Error", message: "User Not Found", seconds: 2);
+      // print(dataResponse.body);
     }
   }
 

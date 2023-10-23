@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../../widget/SizeBox_Widget.dart';
+import '../../../../router/app_pages.dart';
 import '../../../MainApp/controllers/main_app_controller.dart';
 import '../../controllers/home_controller.dart';
 
@@ -18,6 +19,7 @@ class GridViewItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String url = controller.repoList[index].url;
     return Obx(
       () => Padding(
         padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
@@ -26,7 +28,7 @@ class GridViewItem extends StatelessWidget {
           elevation: 5,
           child: GestureDetector(
             onTap: () {
-              print(controller.repoList[index].url);
+              Get.toNamed(Routes.repoView, arguments: url);
             },
             child: Container(
               height: 100,
@@ -100,7 +102,7 @@ class GridViewItem extends StatelessWidget {
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(5))),
                             onPressed: () {
-                              print(controller.repoList[index].url);
+                              Get.toNamed(Routes.repoView, arguments: url);
                             },
                             child: Text(
                               "Public",
