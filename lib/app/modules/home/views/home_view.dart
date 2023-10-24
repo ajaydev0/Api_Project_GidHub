@@ -69,9 +69,20 @@ class HomeView extends GetView<HomeController> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        const Text("Sort (A-Z)"),
+                        TextButton(
+                          onPressed: () {
+                            controller.showSortDialog();
+                          },
+                          child: Text(
+                            "Sort ▼",
+                            style: TextStyle(
+                                color: istheme.theme.value
+                                    ? Colors.black
+                                    : Colors.white),
+                          ),
+                        ),
                         Text(
-                            "Repo List (${controller.repoList.length.toInt()})"),
+                            "Repositories (${controller.repoList.length.toInt()})"),
                         Obx(
                           () => IconButton(
                             onPressed: () {

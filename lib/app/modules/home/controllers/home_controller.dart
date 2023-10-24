@@ -1,10 +1,121 @@
 import 'dart:convert';
 import 'package:api_project/Utils/snackBar_utils.dart';
 import 'package:api_project/app/modules/models/repoModel.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
 class HomeController extends GetxController {
+  sortAtoZ() {
+    // repoList.sort();
+    Get.back();
+  }
+
+  sortZtoA() {
+    // repoList.sort();
+    Get.back();
+  }
+
+  dateOrderByCreate() {
+    // repoList.sort();
+    Get.back();
+  }
+
+  dateOrderByUpdate() {
+    // repoList.sort();
+    Get.back();
+  }
+
+  dateOrderByPush() {
+    // repoList.sort();
+    Get.back();
+  }
+
+  //Sort Dialog Box
+  showSortDialog() {
+    return Get.bottomSheet(
+      Container(
+        height: 280,
+        decoration: const BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(20), topRight: Radius.circular(20))),
+        child: Padding(
+          padding: const EdgeInsets.all(10),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              TextButton(
+                onPressed: () {
+                  sortAtoZ();
+                },
+                child: const Row(
+                  children: [
+                    Text(
+                      "Name (A-Z)",
+                      style: TextStyle(fontSize: 18),
+                    ),
+                  ],
+                ),
+              ),
+              TextButton(
+                onPressed: () {
+                  sortZtoA();
+                },
+                child: const Row(
+                  children: [
+                    Text(
+                      "Name (Z-A)",
+                      style: TextStyle(fontSize: 18),
+                    ),
+                  ],
+                ),
+              ),
+              TextButton(
+                  onPressed: () {
+                    dateOrderByCreate();
+                  },
+                  child: const Row(
+                    children: [
+                      Text(
+                        "Date order by create",
+                        style: TextStyle(fontSize: 18),
+                      ),
+                    ],
+                  )),
+              TextButton(
+                  onPressed: () {
+                    dateOrderByUpdate();
+                  },
+                  child: const Row(
+                    children: [
+                      Text(
+                        "Date order by update",
+                        style: TextStyle(fontSize: 18),
+                      ),
+                    ],
+                  )),
+              TextButton(
+                  onPressed: () {
+                    dateOrderByPush();
+                  },
+                  child: const Row(
+                    children: [
+                      Text(
+                        "Date order by push",
+                        style: TextStyle(fontSize: 18),
+                      ),
+                    ],
+                  )),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  //
   dynamic userName;
   @override
   void onInit() {
