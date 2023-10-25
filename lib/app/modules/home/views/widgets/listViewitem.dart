@@ -110,7 +110,7 @@ class ListViewitem extends StatelessWidget {
                     ),
                     KsBox(h: 2),
                     Text(
-                      controller.repoList[index].repoDate.substring(0, 10),
+                      controller.repoList[index].updateDate!.substring(0, 10),
                       style: const TextStyle(
                           fontWeight: FontWeight.bold, fontSize: 11),
                     )

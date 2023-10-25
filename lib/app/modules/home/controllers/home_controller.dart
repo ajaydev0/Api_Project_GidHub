@@ -7,27 +7,42 @@ import 'package:http/http.dart' as http;
 
 class HomeController extends GetxController {
   sortAtoZ() {
-    // repoList.sort();
+    repoList.sort(
+      (a, b) => a.repoName.toLowerCase().compareTo(b.repoName.toLowerCase()),
+    );
+    repoList.refresh();
     Get.back();
   }
 
   sortZtoA() {
-    // repoList.sort();
+    repoList.sort(
+      (a, b) => b.repoName.toLowerCase().compareTo(a.repoName.toLowerCase()),
+    );
+    repoList.refresh();
     Get.back();
   }
 
   dateOrderByCreate() {
-    // repoList.sort();
+    repoList.sort(
+      (a, b) => a.createDate!.compareTo(b.createDate!),
+    );
+    repoList.refresh();
     Get.back();
   }
 
   dateOrderByUpdate() {
-    // repoList.sort();
+    repoList.sort(
+      (a, b) => a.updateDate!.compareTo(b.updateDate!),
+    );
+    repoList.refresh();
     Get.back();
   }
 
   dateOrderByPush() {
-    // repoList.sort();
+    repoList.sort(
+      (a, b) => a.pushDate!.compareTo(b.pushDate!),
+    );
+    repoList.refresh();
     Get.back();
   }
 
@@ -156,10 +171,13 @@ class HomeController extends GetxController {
       var data2 = json.decode(dataResponse.body);
       for (var element in data2) {
         repoList.add(RepoModel(
-            repoName: element["name"].toString(),
-            url: element["html_url"].toString(),
-            repoDate: element["updated_at"].toString(),
-            type: element["language"].toString()));
+          repoName: element["name"].toString(),
+          url: element["html_url"].toString(),
+          type: element["language"].toString(),
+          createDate: element["created_at"].toString(),
+          updateDate: element["updated_at"].toString(),
+          pushDate: element["pushed_at"].toString(),
+        ));
       }
 
       isLoading.value = false;

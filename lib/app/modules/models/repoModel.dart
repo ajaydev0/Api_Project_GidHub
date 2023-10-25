@@ -3,12 +3,17 @@
 class RepoModel {
   String repoName;
   String url;
-  String repoDate;
   String type;
+  String? createDate;
+  String? updateDate;
+  String? pushDate;
+
   RepoModel({
     required this.repoName,
     required this.url,
-    required this.repoDate,
     required this.type,
+    this.createDate,
+    this.updateDate,
+    this.pushDate,
   });
 }
