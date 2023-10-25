@@ -71,7 +71,8 @@ class UserInputView extends GetView<UserInputController> {
                       tColor: istheme.theme.value ? Colors.white : Colors.black,
                       tSize: 16,
                       onPressed: () {
-                        controller.searchClick(context, controller);
+                        var owner = "Created By Ajay";
+                        controller.searchClick(context, controller, owner);
                       },
                       backgroundColor:
                           istheme.theme.value ? Colors.black : Colors.white,
