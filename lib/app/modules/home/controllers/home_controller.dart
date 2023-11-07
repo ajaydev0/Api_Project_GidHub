@@ -55,6 +55,9 @@ class HomeController extends GetxController {
       Container(
         height: 280,
         decoration: BoxDecoration(
+            border: Border.all(
+                color: istheme.theme.value ? Colors.black : Colors.white,
+                width: 0.3),
             color: istheme.theme.value ? Colors.white : Colors.black,
             borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(20), topRight: Radius.circular(20))),
