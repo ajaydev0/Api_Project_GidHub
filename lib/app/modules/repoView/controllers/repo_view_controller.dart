@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import '../../../../const/colors.dart';
 
 class RepoViewController extends GetxController {
   RxDouble webLoading = 0.0.obs;
@@ -10,7 +10,7 @@ class RepoViewController extends GetxController {
     String repourl = Get.arguments;
     controller = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
-      ..setBackgroundColor(Colors.white)
+      ..setBackgroundColor(Kcolor.white)
       ..setNavigationDelegate(
         NavigationDelegate(
           onProgress: (int progress) {

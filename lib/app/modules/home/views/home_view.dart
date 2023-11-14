@@ -1,8 +1,11 @@
+import 'package:api_project/widget/Container_Widget.dart';
 import 'package:api_project/widget/KAppBar.dart';
 import 'package:api_project/widget/SizeBox_Widget.dart';
+import 'package:api_project/widget/Text_Widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../../const/colors.dart';
 import '../../MainApp/controllers/main_app_controller.dart';
 import '../controllers/home_controller.dart';
 import 'widgets/GridViewItem.dart';
@@ -30,9 +33,9 @@ class HomeView extends GetView<HomeController> {
                       children: [
                         CachedNetworkImage(
                           imageUrl: controller.userImgData.value,
-                          imageBuilder: (context, imageProvider) => Container(
-                            height: 150,
-                            width: 150,
+                          imageBuilder: (context, imageProvider) => Kcontainer(
+                            h: 150,
+                            w: 150,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               image: DecorationImage(
@@ -44,11 +47,11 @@ class HomeView extends GetView<HomeController> {
                           placeholder: (context, url) => KsBox(
                               h: 100,
                               w: 100,
-                              child: const CircularProgressIndicator(
-                                  color: Colors.black)),
-                          errorWidget: (context, url, error) => Container(
-                            height: 150,
-                            width: 150,
+                              child: CircularProgressIndicator(
+                                  color: Kcolor.black)),
+                          errorWidget: (context, url, error) => Kcontainer(
+                            h: 150,
+                            w: 150,
                             decoration: BoxDecoration(
                               color: Colors.grey.shade200,
                               shape: BoxShape.circle,
@@ -59,10 +62,9 @@ class HomeView extends GetView<HomeController> {
                             ),
                           ),
                         ),
-                        Text(
-                          controller.userNameData.value,
-                          style: const TextStyle(fontWeight: FontWeight.bold),
-                        ),
+                        Ktext(
+                            text: controller.userNameData.value,
+                            weight: FontWeight.bold),
                       ],
                     ),
                     KsBox(h: 40),
@@ -73,16 +75,15 @@ class HomeView extends GetView<HomeController> {
                           onPressed: () {
                             controller.showSortDialog();
                           },
-                          child: Text(
-                            "Sort ▼",
-                            style: TextStyle(
-                                color: istheme.theme.value
-                                    ? Colors.black
-                                    : Colors.white),
-                          ),
+                          child: Ktext(
+                              text: "Sort ▼",
+                              color: istheme.theme.value
+                                  ? Kcolor.black
+                                  : Kcolor.white),
                         ),
-                        Text(
-                            "Repositories (${controller.repoList.length.toInt()})"),
+                        Ktext(
+                            text:
+                                "Repositories (${controller.repoList.length.toInt()})"),
                         Obx(
                           () => IconButton(
                             onPressed: () {
@@ -94,8 +95,8 @@ class HomeView extends GetView<HomeController> {
                                   : Icons.grid_view,
                               size: 25,
                               color: istheme.theme.value
-                                  ? Colors.black
-                                  : Colors.white,
+                                  ? Kcolor.black
+                                  : Kcolor.white,
                             ),
                           ),
                         )
@@ -103,8 +104,8 @@ class HomeView extends GetView<HomeController> {
                     ),
                     KsBox(h: 20),
                     controller.listToGrid.value
-                        ? SizedBox(
-                            height: 100 * controller.repoList.length.toDouble(),
+                        ? KsBox(
+                            h: 100 * controller.repoList.length.toDouble(),
                             child: ListView.builder(
                               physics: const NeverScrollableScrollPhysics(),
                               scrollDirection: Axis.vertical,
@@ -117,9 +118,9 @@ class HomeView extends GetView<HomeController> {
                               },
                             ),
                           )
-                        : SizedBox(
+                        : KsBox(
                             //Even / Odd Logic
-                            height: controller.repoList.length.toInt().isEven
+                            h: controller.repoList.length.toInt().isEven
                                 ? 180 * controller.repoList.length / 2
                                 : 108 * controller.repoList.length.toDouble(),
                             child: GridView.builder(

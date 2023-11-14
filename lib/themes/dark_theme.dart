@@ -1,28 +1,29 @@
 import 'package:flutter/material.dart';
+import '../const/colors.dart';
 
 ThemeData darkTheme = ThemeData(
-  iconButtonTheme: const IconButtonThemeData(
-      style: ButtonStyle(iconColor: MaterialStatePropertyAll(Colors.white))),
+  iconButtonTheme: IconButtonThemeData(
+      style: ButtonStyle(iconColor: MaterialStatePropertyAll(Kcolor.white))),
   elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-    backgroundColor: Colors.black,
+    backgroundColor: Kcolor.black,
   )),
-  primaryColor: Colors.black,
-  appBarTheme: const AppBarTheme(
-      backgroundColor: Colors.black,
-      titleTextStyle: TextStyle(color: Colors.white),
+  primaryColor: Kcolor.black,
+  appBarTheme: AppBarTheme(
+      backgroundColor: Kcolor.black,
+      titleTextStyle: TextStyle(color: Kcolor.white),
       iconTheme: IconThemeData(
-        color: Colors.white,
+        color: Kcolor.white,
       )),
-  scaffoldBackgroundColor: Colors.black,
-  textTheme: const TextTheme(
-    headline1: TextStyle(color: Colors.white),
-    headline2: TextStyle(color: Colors.white),
-    headline3: TextStyle(color: Colors.white),
-    headline4: TextStyle(color: Colors.white),
-    headline5: TextStyle(color: Colors.white),
-    headline6: TextStyle(color: Colors.white),
-    bodyText1: TextStyle(color: Colors.white),
-    bodyText2: TextStyle(color: Colors.white),
+  scaffoldBackgroundColor: Kcolor.black,
+  textTheme: TextTheme(
+    headline1: TextStyle(color: Kcolor.white),
+    headline2: TextStyle(color: Kcolor.white),
+    headline3: TextStyle(color: Kcolor.white),
+    headline4: TextStyle(color: Kcolor.white),
+    headline5: TextStyle(color: Kcolor.white),
+    headline6: TextStyle(color: Kcolor.white),
+    bodyText1: TextStyle(color: Kcolor.white),
+    bodyText2: TextStyle(color: Kcolor.white),
   ),
 );

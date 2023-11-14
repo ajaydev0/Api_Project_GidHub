@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../app/modules/MainApp/controllers/main_app_controller.dart';
+import '../const/colors.dart';
 
 class KtextFeild extends StatelessWidget {
   const KtextFeild({
@@ -39,14 +39,14 @@ class KtextFeild extends StatelessWidget {
     final istheme = Get.put(MainAppController());
     return TextFormField(
       style: style,
-      cursorColor: istheme.theme.value ? Colors.black : Colors.white,
+      cursorColor: istheme.theme.value ? Kcolor.black : Kcolor.white,
       obscureText: obscureText,
       validator: validator,
       maxLength: maxLength,
       controller: controller,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       decoration: InputDecoration(
-        prefixIconColor: istheme.theme.value ? Colors.black : Colors.white,
+        prefixIconColor: istheme.theme.value ? Kcolor.black : Kcolor.white,
         hintText: hintText,
         counterText: counterText,
         labelText: labelText,
@@ -58,13 +58,13 @@ class KtextFeild extends StatelessWidget {
               Radius.circular(30),
             ),
             borderSide: BorderSide(
-                color: istheme.theme.value ? Colors.black : Colors.white)),
+                color: istheme.theme.value ? Kcolor.black : Kcolor.white)),
         enabledBorder: OutlineInputBorder(
             borderRadius: const BorderRadius.all(
               Radius.circular(30),
             ),
             borderSide: BorderSide(
-                color: istheme.theme.value ? Colors.black : Colors.white)),
+                color: istheme.theme.value ? Kcolor.black : Kcolor.white)),
         border: const OutlineInputBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(30),

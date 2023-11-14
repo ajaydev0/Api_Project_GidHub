@@ -1,4 +1,7 @@
 import 'package:api_project/app/router/app_pages.dart';
+import 'package:api_project/const/colors.dart';
+import 'package:api_project/widget/Container_Widget.dart';
+import 'package:api_project/widget/Text_Widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../../widget/SizeBox_Widget.dart';
@@ -29,18 +32,18 @@ class ListViewitem extends StatelessWidget {
             onTap: () {
               Get.toNamed(Routes.repoView, arguments: url);
             },
-            child: Container(
-              height: 80,
+            child: Kcontainer(
+              h: 80,
               decoration: BoxDecoration(
                   border: Border.all(
                     color: istheme.theme.value
-                        ? Colors.black.withOpacity(.3)
-                        : Colors.white.withOpacity(.3),
+                        ? Kcolor.black.withOpacity(.3)
+                        : Kcolor.white.withOpacity(.3),
                   ),
                   borderRadius: BorderRadius.circular(10),
                   color: istheme.theme.value
-                      ? Colors.white.withOpacity(.85)
-                      : Colors.black.withOpacity(.85)),
+                      ? Kcolor.white.withOpacity(.85)
+                      : Kcolor.black.withOpacity(.85)),
               child: Padding(
                 padding: const EdgeInsets.all(10),
                 child: Column(
@@ -60,15 +63,15 @@ class ListViewitem extends StatelessWidget {
                           ),
                         ),
                         Obx(
-                          () => Container(
-                            height: 30,
-                            width: 70,
+                          () => Kcontainer(
+                            h: 30,
+                            w: 70,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5),
                               border: Border.all(
                                 color: istheme.theme.value
-                                    ? Colors.black.withOpacity(.3)
-                                    : Colors.white.withOpacity(.3),
+                                    ? Kcolor.black.withOpacity(.3)
+                                    : Kcolor.white.withOpacity(.3),
                               ),
                             ),
                             child: ElevatedButton(
@@ -79,41 +82,37 @@ class ListViewitem extends StatelessWidget {
                                 onPressed: () {
                                   Get.toNamed(Routes.repoView, arguments: url);
                                 },
-                                child: Text(
-                                  "Public",
-                                  style: TextStyle(
-                                    fontSize: 12,
+                                child: Ktext(
+                                    text: "Public",
+                                    size: 12,
                                     color: istheme.theme.value
-                                        ? Colors.black
-                                        : Colors.white,
-                                  ),
-                                )),
+                                        ? Kcolor.black
+                                        : Kcolor.white)),
                           ),
                         )
                       ],
                     ),
                     Row(
                       children: [
-                        Container(
-                          height: 10,
-                          width: 10,
+                        Kcontainer(
+                          h: 10,
+                          w: 10,
                           decoration: const BoxDecoration(
                               color: Colors.teal, shape: BoxShape.circle),
                         ),
                         KsBox(w: 5),
-                        Text(
-                          controller.repoList[index].type,
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 11),
-                        ),
+                        Ktext(
+                            text: controller.repoList[index].type,
+                            weight: FontWeight.bold,
+                            size: 11),
                       ],
                     ),
                     KsBox(h: 2),
-                    Text(
-                      controller.repoList[index].updateDate!.substring(0, 10),
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 11),
-                    )
+                    Ktext(
+                        text: controller.repoList[index].updateDate!
+                            .substring(0, 10),
+                        weight: FontWeight.bold,
+                        size: 11)
                   ],
                 ),
               ),

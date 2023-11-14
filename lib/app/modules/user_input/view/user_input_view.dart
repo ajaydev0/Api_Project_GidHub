@@ -1,3 +1,4 @@
+import 'package:api_project/const/colors.dart';
 import 'package:api_project/widget/Container_Widget.dart';
 import 'package:api_project/widget/ElevatedButton_Widget.dart';
 import 'package:api_project/widget/KAppBar.dart';
@@ -47,15 +48,15 @@ class UserInputView extends GetView<UserInputController> {
                       child: KtextFeild(
                           style: TextStyle(
                               color: istheme.theme.value
-                                  ? Colors.black
-                                  : Colors.white),
+                                  ? Kcolor.black
+                                  : Kcolor.white),
                           labelStyle: TextStyle(
                             color: istheme.theme.value
-                                ? Colors.black
-                                : Colors.white,
+                                ? Kcolor.black
+                                : Kcolor.white,
                           ),
                           prefixIcon: const Icon(Icons.search),
-                          prefixIconColor: Colors.black,
+                          prefixIconColor: Kcolor.black,
                           controller: controller.inputEmail,
                           validator: (value) {
                             return controller.validateEmail(value);
@@ -68,14 +69,14 @@ class UserInputView extends GetView<UserInputController> {
                       h: 40,
                       w: 100,
                       text: "Search",
-                      tColor: istheme.theme.value ? Colors.white : Colors.black,
+                      tColor: istheme.theme.value ? Kcolor.white : Kcolor.black,
                       tSize: 16,
                       onPressed: () {
                         var owner = "Created By Ajay";
                         controller.searchClick(context, controller, owner);
                       },
                       backgroundColor:
-                          istheme.theme.value ? Colors.black : Colors.white,
+                          istheme.theme.value ? Kcolor.black : Kcolor.white,
                     ),
                   ),
                 ],

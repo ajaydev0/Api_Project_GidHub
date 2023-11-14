@@ -1,3 +1,5 @@
+import 'package:api_project/widget/Container_Widget.dart';
+import 'package:api_project/widget/Text_Widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/repo_view_controller.dart';
@@ -10,7 +12,7 @@ class RepoViewView extends GetView<RepoViewController> {
     var controller = Get.put(RepoViewController());
     return Scaffold(
       appBar: AppBar(
-        title: const Text('RepoView Page'),
+        title: Ktext(text: 'RepoView Page'),
         centerTitle: true,
       ),
       body: Column(
@@ -20,7 +22,7 @@ class RepoViewView extends GetView<RepoViewController> {
                 ? LinearProgressIndicator(
                     value: controller.webLoading.value,
                   )
-                : Container(),
+                : Kcontainer(),
           ),
           Expanded(child: WebViewWidget(controller: controller.controller)),
         ],

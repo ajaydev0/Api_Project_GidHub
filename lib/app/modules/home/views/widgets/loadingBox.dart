@@ -1,5 +1,7 @@
+import 'package:api_project/widget/Text_Widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../../../const/colors.dart';
 import '../../../../../widget/ElevatedButton_Widget.dart';
 import '../../../../../widget/SizeBox_Widget.dart';
 import '../../../MainApp/controllers/main_app_controller.dart';
@@ -16,12 +18,12 @@ class LoadingBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Material(
-        color: istheme.theme.value ? Colors.grey.shade300 : Colors.white,
+        color: istheme.theme.value ? Colors.grey.shade300 : Kcolor.white,
         borderRadius: BorderRadius.circular(10),
         elevation: 20,
-        child: SizedBox(
-          height: 250,
-          width: 200,
+        child: KsBox(
+          h: 250,
+          w: 200,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -29,11 +31,8 @@ class LoadingBox extends StatelessWidget {
               KsBox(
                   h: 50,
                   w: 50,
-                  child: const CircularProgressIndicator(color: Colors.black)),
-              const Text(
-                "Loading...",
-                style: TextStyle(color: Colors.black),
-              ),
+                  child: CircularProgressIndicator(color: Kcolor.black)),
+              Ktext(text: "Loading...", color: Kcolor.black),
               KeleButtonText(
                 h: 40,
                 w: 150,
@@ -41,7 +40,7 @@ class LoadingBox extends StatelessWidget {
                 onPressed: () {
                   Get.back();
                 },
-                tColor: istheme.theme.value ? Colors.black : Colors.white,
+                tColor: istheme.theme.value ? Kcolor.black : Kcolor.white,
               ),
             ],
           ),

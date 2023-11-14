@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
+import '../../../../const/colors.dart';
 import '../../MainApp/controllers/main_app_controller.dart';
+import '../views/widgets/sortItems.dart';
 
 class HomeController extends GetxController {
   sortAtoZ() {
@@ -56,9 +58,9 @@ class HomeController extends GetxController {
         height: 280,
         decoration: BoxDecoration(
             border: Border.all(
-                color: istheme.theme.value ? Colors.black : Colors.white,
+                color: istheme.theme.value ? Kcolor.black : Kcolor.white,
                 width: 0.3),
-            color: istheme.theme.value ? Colors.white : Colors.black,
+            color: istheme.theme.value ? Kcolor.white : Kcolor.black,
             borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(20), topRight: Radius.circular(20))),
         child: Padding(
@@ -67,88 +69,41 @@ class HomeController extends GetxController {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              TextButton(
+              sortItems(
+                text: "Name (A-Z)",
+                istheme,
                 onPressed: () {
                   sortAtoZ();
                 },
-                child: Row(
-                  children: [
-                    Text(
-                      "Name (A-Z)",
-                      style: TextStyle(
-                        fontSize: 18,
-                        color:
-                            istheme.theme.value ? Colors.black : Colors.white,
-                      ),
-                    ),
-                  ],
-                ),
               ),
-              TextButton(
+              sortItems(
+                text: "Name (Z-A)",
+                istheme,
                 onPressed: () {
                   sortZtoA();
                 },
-                child: Row(
-                  children: [
-                    Text(
-                      "Name (Z-A)",
-                      style: TextStyle(
-                        fontSize: 18,
-                        color:
-                            istheme.theme.value ? Colors.black : Colors.white,
-                      ),
-                    ),
-                  ],
-                ),
               ),
-              TextButton(
-                  onPressed: () {
-                    dateOrderByCreate();
-                  },
-                  child: Row(
-                    children: [
-                      Text(
-                        "Date order by create",
-                        style: TextStyle(
-                          fontSize: 18,
-                          color:
-                              istheme.theme.value ? Colors.black : Colors.white,
-                        ),
-                      ),
-                    ],
-                  )),
-              TextButton(
-                  onPressed: () {
-                    dateOrderByUpdate();
-                  },
-                  child: Row(
-                    children: [
-                      Text(
-                        "Date order by update",
-                        style: TextStyle(
-                          fontSize: 18,
-                          color:
-                              istheme.theme.value ? Colors.black : Colors.white,
-                        ),
-                      ),
-                    ],
-                  )),
-              TextButton(
-                  onPressed: () {
-                    dateOrderByPush();
-                  },
-                  child: Row(
-                    children: [
-                      Text(
-                        "Date order by push",
-                        style: TextStyle(
-                          fontSize: 18,
-                          color:
-                              istheme.theme.value ? Colors.black : Colors.white,
-                        ),
-                      ),
-                    ],
-                  )),
+              sortItems(
+                text: "Date order by create",
+                istheme,
+                onPressed: () {
+                  dateOrderByCreate();
+                },
+              ),
+              sortItems(
+                text: "Date order by update",
+                istheme,
+                onPressed: () {
+                  dateOrderByUpdate();
+                },
+              ),
+              sortItems(
+                text: "Date order by push",
+                istheme,
+                onPressed: () {
+                  dateOrderByPush();
+                },
+              ),
             ],
           ),
         ),
